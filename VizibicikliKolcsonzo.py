@@ -26,16 +26,33 @@ print("5. feladat: Napi kölcsönzések száma:", len(kolcsonzesek)-1)
 inputs = input("6. feladat: Kérek egy nevet:")
 for i in kolcsonzesek:
     if inputs == i.name:
-        idopont.append(i.sh)
-        idopont.append(i.sm)
-        idopont.append(i.eh)
-        idopont.append(i.em) 
+        idopont.append(int(i.sh))
+        idopont.append(int(i.sm))
+        idopont.append(int(i.eh))
+        idopont.append(int(i.em)) 
         kolcson.append(idopont)
         idopont = []
 
 if len(kolcson) > 0:    
     print(inputs, "kölcsönzései:")
-    for i in kolcson:
-        print(f"{i[0]} : {i[1]} - {i[2]} : {i[3]}")
+    for i in kolcson: 
+        if i[0] < 10:
+            sh = f"0{i[0]}"
+        else:
+            sh = i[0]
+        if i[1] < 10:
+            sm = f"0{i[1]}"
+        else:
+            sm = i[1]
+        if i[2] < 10:
+            eh = f"0{i[2]}"
+        else:
+            eh = i[2]
+        if i[3] < 10:
+            em = f"0{i[3]}"
+        else:
+            em = i[3]
+                
+        print(f"{sh} : {sm} - {eh} : {em}")
 else:
     print("Nem volt ilyen nevű kölcsonző!")
